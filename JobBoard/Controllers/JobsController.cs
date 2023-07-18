@@ -6,6 +6,7 @@ namespace JobBoard.Controllers
 {
     public class JobsController : Controller
     {
+
         [HttpGet("/jobs/new")]
         public ActionResult CreateForm()
         {
