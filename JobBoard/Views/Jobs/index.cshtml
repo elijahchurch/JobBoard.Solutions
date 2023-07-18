@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs posted</title>
+</head>
+<body>
+    @using JobBoard.Models;
+
+    <h1>Listed Jobs</h1>
+    @if (Model.Count == 0)
+    {
+        <p>there are no jobs posted at this time</p>
+    }
+    <ul>
+        @foreach (JobOpening jobs in Model)
+        {
+            <li>@jobs.Name</li>
+            <li>@jobs.Description</li>
+            <li>@jobs.Email</li>
+        }
+    </ul>
+    <a href="/jobs/new">Click here to add a job posting</a>
+    <a href="/">Back to home-page</a>
+</body>
+</html>
