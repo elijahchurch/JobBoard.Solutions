@@ -6,15 +6,54 @@ using System.Collections.Generic;
 namespace JobBoard.Tests
 {
     [TestClass]
-    public class JobOpeningTests
+    public class JobOpeningTests : IDisposable
     {
+        public void Dispose()
+        {
+            JobOpening.ClearAll();
+        }
         // Test methods go here
         [TestMethod]
-        public void NameOfMethodWeAreTesting_DescriptionOfBehavior_ExpectedReturnValue()
+        public void JobOpeningConstructor_InstantiateJobOpeningClass_JobOpening()
         {
-        // any necessary logic to prep for test; instantiating new classes, etc.
-        // we can also use the arrange, act, assert organization in any test. 
-        Assert.AreEqual(ExpectedResult, CodeToTest);
+        JobOpening testJob = new JobOpening("programmer", "code good", "baabab@gmail.com");
+        Assert.AreEqual(typeof(JobOpening), testJob.GetType());
+        }
+
+        [TestMethod]
+        public void JobOpeningConstructor_NameFieldUpdates_String()
+        {
+            JobOpening testJob = new JobOpening("programmer", "code good", "baabab@gmail.com");
+            Assert.AreEqual("programmer", testJob.Name);
+        }
+
+        [TestMethod]
+        public void JobOpeningConstructor_DescriptionFieldUpdates_String()
+        {
+            JobOpening testJob = new JobOpening("programmer", "code good", "baabab@gmail.com");
+            Assert.AreEqual("code good", testJob.Description);
+        }
+
+        [TestMethod]
+        public void JobOpeningConstructor_EmailFieldUpdates_String()
+        {
+            JobOpening testJob = new JobOpening("programmer", "code good", "baabab@gmail.com");
+            Assert.AreEqual("baabab@gmail.com", testJob.Email);
+        }
+        [TestMethod]
+        public void GetAll_ReturnsEmptyList_JobList()
+        {
+            List<JobOpening> expectedList = new List<JobOpening> {};
+            List<JobOpening> testList = JobOpening.GetAll();
+            CollectionAssert.AreEqual(expectedList, testList);
+        }
+
+        [TestMethod]
+        public void JobOpeningConstructor_AddJobOpeningToList_List()
+        {
+        JobOpening testJob = new JobOpening("programmer", "code good", "baabab@gmail.com");
+        List<JobOpening> expectedList = JobOpening.GetAll();
+        Assert.AreEqual( expectedList[0], testJob );
         }
     }
 }
