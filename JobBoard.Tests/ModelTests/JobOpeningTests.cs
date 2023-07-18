@@ -1,10 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectName.Models;
+using JobBoard.Models;
+using System;
+using System.Collections.Generic;
 
-namespace ProjectName.Tests
+namespace JobBoard.Tests
 {
     [TestClass]
-    public class ClassNameTests
+    public class JobOpeningTests
     {
         // Test methods go here
         [TestMethod]
